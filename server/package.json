@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server for user management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "n"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-micro": "^3.12.0",
+    "graphql": "^16.8.0",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.3"
+  }
+}
