@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import React from "react";
 import Head from "next/head";
 
 const Home: NextPage = () => {
@@ -10,7 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main></main>
+      <main>this is my app</main>
     </div>
   );
 };
