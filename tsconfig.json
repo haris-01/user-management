@@ -16,16 +16,11 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@server": ["./server/*"],
-      "@providers/*": ["./src/components/providers/*"],
-      "@pageComponents/*": ["./src/components/pageComponents/*"],
-      "@queries/*": ["./src/queries/*"],
-      "@mutations/*": ["./src/mutations/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@models": ["./server/models/*"],
-      "@schema": ["./server/schema/*"]
+      "@server/*": ["./server/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx,./src,./server"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

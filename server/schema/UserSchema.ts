@@ -36,7 +36,7 @@ const RootQuery = new GraphQLObjectType({
       args: {
         id: { type: GraphQLID },
       },
-      resolve(_, args) {
+      resolve(_: unknown, args: singleUserType["user"]) {
         return Users.findById(args.id);
       },
     },
@@ -69,7 +69,7 @@ const mutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
-      resolve(_: any, args: any) {
+      resolve(_: unknown, args: singleUserType["user"]) {
         const id = args.id;
         return Users.findByIdAndRemove(id);
       },

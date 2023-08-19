@@ -1,6 +1,7 @@
-import type { NextPage } from "next";
 import React from "react";
 import Head from "next/head";
+import HomePage from "@components/HomePage";
+import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
@@ -10,8 +11,7 @@ const Home: NextPage = () => {
         <meta name="description" content="User Management App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>this is my app</main>
+      <HomePage />
     </div>
   );
 };
