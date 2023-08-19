@@ -8,4 +8,4 @@ const UserSchema = new Schema({
   phone: { type: String },
   linkedIn: { type: String },
 });
-module.exports = mongoose.models.User || mongoose.model("User", UserSchema);
+module.exports = mongoose.models.Users || mongoose.model("Users", UserSchema);

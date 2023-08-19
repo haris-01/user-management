@@ -1,5 +1,5 @@
 import { singleUserType } from "src/types/userType";
-const User = require("../models/UserModel");
+const Users = require("../models/UserModel");
 
 const {
   GraphQLObjectType,
@@ -28,7 +28,16 @@ const RootQuery = new GraphQLObjectType({
     users: {
       type: new GraphQLList(UserType),
       resolve() {
-        return User.find();
+        return Users.find();
+      },
+    },
+    user: {
+      type: UserType,
+      args: {
+        id: { type: GraphQLID },
+      },
+      resolve(_, args) {
+        return Users.findById(args.id);
       },
     },
   },
@@ -46,7 +55,7 @@ const mutation = new GraphQLObjectType({
         linkedIn: { type: GraphQLString },
       },
       resolve(_: any, args: any) {
-        const newUser = new User({
+        const newUser = new Users({
           name: args.name,
           email: args.email,
           phone: args.phone,
@@ -62,14 +71,14 @@ const mutation = new GraphQLObjectType({
       },
       resolve(_: any, args: any) {
         const id = args.id;
-        return User.findByIdAndRemove(id);
+        return Users.findByIdAndRemove(id);
       },
     },
     deleteAllUsers: {
       type: UserType,
 
       resolve() {
-        return User.deleteMany({});
+        return Users.deleteMany({});
       },
     },
   },

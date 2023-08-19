@@ -16,7 +16,14 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@server": ["./server/*"]
+      "@server": ["./server/*"],
+      "@providers/*": ["./src/components/providers/*"],
+      "@pageComponents/*": ["./src/components/pageComponents/*"],
+      "@queries/*": ["./src/queries/*"],
+      "@mutations/*": ["./src/mutations/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@models": ["./server/models/*"],
+      "@schema": ["./server/schema/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx,./src,./server"],
