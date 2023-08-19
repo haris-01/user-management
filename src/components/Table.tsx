@@ -1,3 +1,4 @@
+import { useDeleteUserById } from "@hooks/useDeleteUserById";
 import React from "react";
 import type { UserTableData } from "src/types/UserTableDataType";
 
@@ -5,6 +6,7 @@ type TablePropsType = {
   data: UserTableData[] | null | undefined;
 };
 const Table = ({ data = [] }: TablePropsType) => {
+  const { removeUser } = useDeleteUserById();
   const [sortedColumn, setSortedColumn] = React.useState<
     keyof UserTableData | null
   >(null);
@@ -19,7 +21,7 @@ const Table = ({ data = [] }: TablePropsType) => {
         setSortDirection("asc");
       }
 
-      const sorted = data?.sort((a, b) => {
+      data?.sort((a, b) => {
         const aValue = a[column];
         const bValue = b[column];
 
@@ -35,7 +37,9 @@ const Table = ({ data = [] }: TablePropsType) => {
   const columnNames = Object.keys(data?.[0] || {}).map((name) => name) as Array<
     keyof UserTableData
   >;
-
+  if (!data?.length) {
+    return null;
+  }
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full">
@@ -50,6 +54,7 @@ const Table = ({ data = [] }: TablePropsType) => {
                 {name}
               </th>
             ))}
+            <th className="cursor-pointer px-4 py-2">ACTION</th>
           </tr>
         </thead>
         <tbody>
@@ -62,6 +67,12 @@ const Table = ({ data = [] }: TablePropsType) => {
                     {cItem}
                   </td>
                 ))}
+                <td
+                  onClick={() => removeUser(item.id)}
+                  className="cursor-pointer text-blue-300 hover:text-blue-500 px-4 py-2"
+                >
+                  REMOVE
+                </td>
               </tr>
             );
           })}

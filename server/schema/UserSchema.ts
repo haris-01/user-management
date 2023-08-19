@@ -1,4 +1,4 @@
-import { singleUserType } from "src/types/userType";
+import { User } from "src/types/userType";
 const Users = require("../models/UserModel");
 
 const {
@@ -36,7 +36,7 @@ const RootQuery = new GraphQLObjectType({
       args: {
         id: { type: GraphQLID },
       },
-      resolve(_: unknown, args: singleUserType["user"]) {
+      resolve(_: unknown, args: User) {
         return Users.findById(args.id);
       },
     },
@@ -69,7 +69,7 @@ const mutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
-      resolve(_: unknown, args: singleUserType["user"]) {
+      resolve(_: unknown, args: User) {
         const id = args.id;
         return Users.findByIdAndRemove(id);
       },

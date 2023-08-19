@@ -8,6 +8,7 @@ import Table from "@components/Table";
 import { useGetAllUsers } from "@hooks/useGetAllUsers";
 import type { User } from "src/types/userType";
 import type { UserTableData } from "src/types/UserTableDataType";
+import AddUserWidget from "./AddUserWidget";
 
 const mapDataToTable = (users: User[]): UserTableData[] => {
   return users.map((user) => ({
@@ -26,7 +27,9 @@ function HomePage() {
     UserTableData[] | null
   >();
 
-  const mappedData = mapDataToTable(users);
+  const mappedData = React.useMemo(() => {
+    return mapDataToTable(users);
+  }, [users]);
 
   React.useEffect(() => {
     if (!users.length) {
@@ -61,6 +64,7 @@ function HomePage() {
         />
         <Table data={filteredData} />
       </MainContentContainer>
+      <AddUserWidget />
     </MainContainer>
   );
 }

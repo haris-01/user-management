@@ -29,4 +29,16 @@ const ADD_USER = gql`
   }
 `;
 
-export { DELETE_ALL_USERS, ADD_USER };
+const DELETE_USER = gql`
+  mutation addUser($id: ID!) {
+    deleteUser(id: $id) {
+      id
+      name
+      email
+      phone
+      linkedIn
+    }
+  }
+`;
+
+export { DELETE_ALL_USERS, ADD_USER, DELETE_USER };
